@@ -12,11 +12,15 @@ def letter_count(beginning, middle, conclusion)
 end
 
 def period_count(beginning, middle, conclusion)
-  beginning.scan(/\./).size +
-  middle.scan(/\./).size +
-  conclusion.scan(/\./).size
+  periods(beginning) +
+  periods(middle) +
+  periods(conclusion)
 end
 
 def words(phrase)
   phrase.split.size
+end
+
+def periods(phrase)
+  phrase.scan(/\./).size
 end
