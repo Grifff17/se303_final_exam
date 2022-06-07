@@ -4,9 +4,7 @@
 #       write.
 
 def word_count(beginning, middle, conclusion)
-  words(beginning) +
-  words(middle) +
-  words(conclusion)
+  [beginning, middle, conclusion].map{ |i| words(i)}.sum
 end
 
 def letter_count(beginning, middle, conclusion)
