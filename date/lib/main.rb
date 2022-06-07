@@ -31,11 +31,7 @@ class Farm
   end
 
   def total_plant_heights
-    total = 0
-    plots.each do |plot|
-      total = total + plot.plant_heights
-    end
-    total
+    plots.map{ |i| i.plant_heights}.sum
   end
 
 end
