@@ -17,8 +17,8 @@ class Farm
     beet_1 = Plant.new("Rainbow", 1)
     beet_2 = Plant.new("Deep Darkness", 1)
     # Plots have a name and some plants
-    plot_a = ["Plot A", corn, radish_1, radish_2]
-    plot_b = ["Plot B", cucumber, tomato, beet_1, beet_2]
+    plot_a = Plot.new("Plot A", corn, radish_1, radish_2)
+    plot_b = Plot.new("Plot B", cucumber, tomato, beet_1, beet_2)
     @plots = [plot_a, plot_b]
   end
 
@@ -27,17 +27,13 @@ class Farm
   end
 
   def total_number_of_plants
-    # Subtract one from size because name is not a plant
-    plots.reduce(0) { |total, plot| total += (plot.size - 1) }
+    plots.reduce(0) { |total, plot| total += (plot.num_plants) }
   end
 
   def total_plant_heights
     total = 0
     plots.each do |plot|
-      # Remove the plot name before iterating over the plants.
-      plot.drop(1).each do |plant|
-        total += plant.height
-      end
+      total = total + plot.plant_heights
     end
     total
   end
@@ -50,6 +46,24 @@ class Plant
   def initialize(name, height)
     @name = name
     @height = height
+  end
+
+end
+
+class Plot
+  attr_reader :name, :plants
+
+  def initialize(name, *plants)
+    @name = name
+    @plants = plants
+  end
+
+  def num_plants
+    plants.length
+  end
+
+  def plant_heights
+    plants.map{ |i| i.height}.sum
   end
 
 end
