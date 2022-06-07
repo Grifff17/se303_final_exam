@@ -12,9 +12,7 @@ def letter_count(beginning, middle, conclusion)
 end
 
 def period_count(beginning, middle, conclusion)
-  periods(beginning) +
-  periods(middle) +
-  periods(conclusion)
+  [beginning, middle, conclusion].map{ |i| periods(i)}.sum
 end
 
 def words(phrase)
