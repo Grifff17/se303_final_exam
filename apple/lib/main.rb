@@ -9,10 +9,5 @@ def story
 end
 
 def middletext
-  middle = ""
-  middle << "\n"
-  middle << "\n"
-  middle << "\n"
-  middle << "\n"
-  middle << "\n"
+  "\n\n\n\n\n"
 end
